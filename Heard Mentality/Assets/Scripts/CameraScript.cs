@@ -10,6 +10,10 @@ public class CameraScript : MonoBehaviour {
         horzExtent = vertExtent * Screen.width / Screen.height;
     }
 
+    private int Boundary  = 50;
+    private int speed  = 200;
+    
+
     Camera camera;
     private float vertExtent;
     private float horzExtent;
@@ -41,10 +45,39 @@ public class CameraScript : MonoBehaviour {
          maxY = mapY / 2.0 - vertExtent;
      */
 
+    private void OnDrawGizmos()
+    {
+        //The current screen boundary
+        Gizmos.color = new Color(1, 1, 1, 0.3f);
+        Gizmos.DrawCube(transform.position, new Vector3(1,1,0));
+    }
+
     // Update is called once per frame
     void Update () {
-	
-	}
+
+        Vector3 position = transform.position;
+        if (Input.mousePosition.x > Screen.width - Boundary)
+        {
+            position.x += speed * Time.deltaTime;
+        }
+
+        if (Input.mousePosition.x < Boundary)
+        {
+            position.x -= speed * Time.deltaTime;
+        }
+
+        if (Input.mousePosition.y > Screen.height - Boundary)
+        {
+            position.y += speed * Time.deltaTime;
+        }
+
+        if (Input.mousePosition.y < Boundary)
+        {
+            position.y -= speed * Time.deltaTime;
+        }
+
+        transform.position = position;
+    }
 
     void LateUpdate()
     {
