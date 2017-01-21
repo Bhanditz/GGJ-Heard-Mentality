@@ -9,9 +9,10 @@ public class GameManager : MonoBehaviour {
 
     void Awake()
     {
-        /*Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
-        Cursor.lockState = CursorLockMode.Locked;   // keep confined to center of screen
-        Cursor.lockState = CursorLockMode.None;     // set to default default*/
+        Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
+        //Cursor.lockState = CursorLockMode.Locked;   // keep confined to center of screen
+        ///Cursor.lockState = CursorLockMode.None;     // set to default default
+        
     }
 
 	// Use this for initialization
